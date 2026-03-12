@@ -33,12 +33,15 @@ ng_application(
     project_name = "myapp",
     srcs = glob(
         [
-            "tsconfig.json",
+            "*.json",
+            "*.ts",
             "src/**/*",
         ],
-        exclude = TEST_EXCLUDES + glob([
-            "**/node_modules/**/*",
-        ]),
+        exclude = [
+            # Exclude sources that get included automatically elsewhere.
+            "angular.json",
+            "tsconfig.app.json",
+        ],
     ),
     node_modules = ":node_modules",
     ng_config = "angular.json",
